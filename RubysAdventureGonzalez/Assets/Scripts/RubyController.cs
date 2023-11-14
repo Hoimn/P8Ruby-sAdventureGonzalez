@@ -12,13 +12,13 @@ public class RubyController : MonoBehaviour
 
     Rigidbody2D rigidbody2d;
     float horizontal;
-    float vertical; 
+    float vertical;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-
         currentHealth = maxHealth;
+        currentHealth = 1;
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class RubyController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-       
+
     }
     void FixedUpdate()
     {
@@ -38,7 +38,7 @@ public class RubyController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
